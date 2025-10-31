@@ -1,3 +1,4 @@
+import "./styles/MemoryCard.css";
 import { useEffect, useState } from "react";
 
 function MemoryCard() {
@@ -17,11 +18,22 @@ function MemoryCard() {
     };
 
     fetchData();
-  },[]);
+  }, []);
 
-  return <>
-        {data.map(character => <img src={character.image} key={character.id} width={100} height={200}/>
-        )}
-    </>;
+  return (
+    <>
+      <div className="card-container">
+          {data.map((character) => (
+            <div className="outer-card">
+              <img
+                src={character.image}
+                key={character.id}
+                className="character-card"
+              />
+            </div>
+          ))}
+      </div>
+    </>
+  );
 }
 export default MemoryCard;
