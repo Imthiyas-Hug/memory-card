@@ -1,5 +1,34 @@
-:root{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+  font-family: "Saiyan Sans";
+  src: url("./assets/fonts/saiyan-sans.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Saiyan Sans", sans-serif;
+  background: linear-gradient(45deg, #b1ac93, #e1f5fe, #77cff8);
+  color: #ffe600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1.2rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-image: url("./assets/dragon-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('./assets/dragon-bg.jpg');
+
+}
+
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
 }

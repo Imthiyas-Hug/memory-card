@@ -22,16 +22,21 @@ function MemoryCard() {
 
   return (
     <>
+      <h1 className="game-heading">Memory Game</h1>
+      <div className="score-board">
+        <h2>Score:</h2>
+        <h2>Best Score:</h2>
+      </div>
       <div className="card-container">
-          {data.map((character) => (
-            <div className="outer-card">
-              <img
-                src={character.image}
-                key={character.id}
-                className="character-card"
-              />
-            </div>
-          ))}
+        {data.map(
+          (character, index) =>
+            index < 100 && (
+              <div className="card" key={character.id}>
+                <img src={character.image} />
+                <p className="character-name">{character.name}</p>
+              </div>
+            )
+        )}
       </div>
     </>
   );
