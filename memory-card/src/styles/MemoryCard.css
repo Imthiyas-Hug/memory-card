@@ -85,7 +85,7 @@
   border-radius: 30px;
   padding: 10px 10px 60px 10px;
   text-align: center;
-  background: linear-gradient(135deg, #b1ac93, #e1f5fe, #77cff8);
+  background: linear-gradient(135deg, #b1ac93, #e1f5fe, #ffbc74);
   transition: transform 0.6s ease-in-out;
   animation: glowPulse 3s infinite ease-in-out;
   overflow: hidden;
