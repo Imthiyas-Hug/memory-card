@@ -12,13 +12,15 @@ function MemoryCard() {
   const [bestScore, setBestScore] = useState(0);
   const [clickedCount, setClickedCount] = useState(0);
   const [result, setResult] = useState("");
-  let tempIdArray = [];  
+  let tempIdArray = [];
+  let tempScore = 0;
+  let previousScore = 0;
 
   const style1 = {
     background: "linear-gradient(90deg, green, #00ff55)",
   };
   const style2 = {
-    background: "linear-gradient(90deg, orange, #ff0000ff)",
+    background: "linear-gradient(90deg, red, #920000ff)",
   };
 
   const getRandomIndex = () => {
@@ -72,18 +74,21 @@ function MemoryCard() {
       tempIdArray.push(e.target.id);
       getRandomIndex();
       setScore((s) => s + 1);
-      console.log("score", score);
-      setBestScore((s) => s + 1);
       setClickedCount((c) => c + 1);
+      ++tempScore;
+      tempScore > previousScore ? setBestScore((s) => s + 1) : null;
     } else {
+      previousScore = tempScore;
       tempIdArray = [];
       setResult("lose");
       document.querySelector("dialog").showModal();
+      tempScore = 0;
     }
     if (tempIdArray.length > 6) {
       tempIdArray = [];
       setResult("win");
       document.querySelector("dialog").showModal();
+      tempScore = 0;
     }
   };
   const handleClick2 = () => {
@@ -91,13 +96,16 @@ function MemoryCard() {
     setClickedCount(0);
     getRandomIndex();
     document.querySelector("dialog").close();
-    console.log("dfdsfs");
   };
   function DisplayResult({ styles }) {
-      const bgImage = result === 'win' ? win : lose ;
+    const bgImage = result === "win" ? win : lose;
     return (
       <div>
-        {document.querySelector('dialog').style.backgroundImage = `url(${bgImage})`}
+        {
+          (document.querySelector(
+            "dialog"
+          ).style.backgroundImage = `url(${bgImage})`)
+        }
         <h1 style={styles}>{result === "win" ? "You Win!" : "You Lose!"}</h1>
       </div>
     );
