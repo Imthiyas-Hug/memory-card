@@ -140,6 +140,7 @@ function MemoryCard() {
           </button>
         </div>
       </dialog>
+       <span className="instruction">Get points by clicking on an image but don't click on any more than once!</span>
     </>
   );
 }
