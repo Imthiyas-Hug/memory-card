@@ -85,6 +85,7 @@ function MemoryCard() {
       tempScore = 0;
     }
     if (tempIdArray.length > 6) {
+      previousScore = tempScore;
       tempIdArray = [];
       setResult("win");
       document.querySelector("dialog").showModal();
