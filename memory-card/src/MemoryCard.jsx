@@ -13,6 +13,7 @@ function MemoryCard() {
   const [clickedCount, setClickedCount] = useState(0);
   const [result, setResult] = useState("");
   let tempIdArray = [];
+  let scoreArray = [];
   let tempScore = 0;
   let previousScore = 0;
 
@@ -78,22 +79,24 @@ function MemoryCard() {
       ++tempScore;
       tempScore > previousScore ? setBestScore((s) => s + 1) : null;
     } else {
-      previousScore = tempScore;
+      scoreArray.push(tempScore);
+      scoreArray.sort((x, y) => y - x);
+      previousScore = scoreArray.slice(0,1);
       tempIdArray = [];
       setResult("lose");
-      document.querySelector("dialog").showModal();
       tempScore = 0;
+      document.querySelector("dialog").showModal();
     }
     if (tempIdArray.length > 6) {
+      scoreArray.push(tempScore);
       previousScore = tempScore;
       tempIdArray = [];
       setResult("win");
-      document.querySelector("dialog").showModal();
       tempScore = 0;
+      document.querySelector("dialog").showModal();
     }
   };
   const handleClick2 = () => {
-    tempScore = 0;
     setScore(0);
     setClickedCount(0);
     getRandomIndex();
@@ -141,7 +144,10 @@ function MemoryCard() {
           </button>
         </div>
       </dialog>
-       <span className="instruction">Get points by clicking on an image but don't click on any more than once!</span>
+      <span className="instruction">
+        Get points by clicking on an image but don't click on any more than
+        once!
+      </span>
     </>
   );
 }
