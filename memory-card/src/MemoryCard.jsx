@@ -93,6 +93,7 @@ function MemoryCard() {
     }
   };
   const handleClick2 = () => {
+    tempScore = 0;
     setScore(0);
     setClickedCount(0);
     getRandomIndex();
